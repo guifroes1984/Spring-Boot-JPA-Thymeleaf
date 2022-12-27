@@ -16,8 +16,7 @@ public class ContasService {
 	@Autowired
 	private ContasRepository rep;
 	
-	@SuppressWarnings("unused")
-	private List<Contas> listAll() {
+	public List<Contas> listAll() {
 		return rep.findAll();
 	}
 	
