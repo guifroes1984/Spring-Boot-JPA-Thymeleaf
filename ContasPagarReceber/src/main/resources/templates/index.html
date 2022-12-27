@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Contas Pagar</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<div class="panel panel-default" style="padding: 20px">
+	<div class="panel-heading">
+			<strong>Minhas contas a Pagar</strong>
+	</div>
+	
+	<div class="panel-body">
+		<div class="table-responsive">
+				<table class="table table-sm table-striped table-hove table-bordered">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Descrição</th>
+							<th>Total</th>
+							<th>Data</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr th:each="conta : ${listContas}">
+							<td th:text="${conta.id}">ID</td>
+							<td th:text="${conta.descricao}">Descrição</td>
+							<td th:text="${conta.valor}">Valor</td>
+							<td th:text="${#dates.format(conta.data, 'dd/MM/yyyy')}">Data</td>
+						</tr>
+					</tbody>
+				</table>
+		</div>	
+	</div>
+	
+	<div class="panel-footer">
+		<a class="btn btn-sm btn-danger" th:href="@{adicionar}">Adicionar Conta</a>
+	</div>
+
+</div>
+
+	
+</body>
+</html>
