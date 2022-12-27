@@ -31,7 +31,7 @@ public class ContasController {
 	public ModelAndView add(Contas conta) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("adicionar");
-		mv.addObject(conta);
+		mv.addObject("conta", conta);
 		
 		return mv;
 	}
