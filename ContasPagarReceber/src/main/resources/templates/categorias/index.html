@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Contas Pagar</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="card" style="padding:20px">
+			<div class="card-header">
+						<strong>Categorias</strong>
+			</div>
+			
+			<form class="form-horizontal" method="GET" th:action="@{/categorias/listar}" style="margin: 10px">
+						<div class="input-group">
+						
+								<input type="text" class="form-control input-sm" id="search" name="search" th:value="${search}"  placeholder="Filtrar por nome">
+								
+	
+								<div class="input-group-append">
+		
+										<button type="submit" class="btn btn-sm btn-danger">Buscar</button>
+								</div>
+						</div>
+			</form>
+			
+			<div class="card-body">
+				<div class="table-responsive">
+						<table class="table table-sm table-striped table-hove table-bordered">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Nome</th>
+									<th>A��es</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr th:each="categoria : ${listCategorias}">
+									<td th:text="${categoria.id}">ID Categoria</td>
+									<td th:text="${categoria.nome}">Nome categoria</td>
+									<td>
+													<a class="btn btn-sm btn-info" th:href="@{editar/{id} (id=${categoria.id})}">Editar</a>
+													<a class="btn btn-sm btn-danger" th:href="@{delete/{id} (id=${categoria.id})}" th:data-confirm-delete="|Deseja realmente excluir ${categoria.nome}|" onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">Apagar</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+				</div>
+			</div>
+			
+			<div class="card-footer">
+					<a class="btn btn-sm btn-danger" th:href="@{adicionar}">Adicionar Conta</a>
+			</div>
+	</div>
+</div>
+
+</body>
+</html>

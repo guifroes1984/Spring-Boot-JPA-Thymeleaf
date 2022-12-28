@@ -19,5 +19,9 @@ public class CategoriaService {
 	public List<Categoria> listAll() {
 		return rep.findAll();
 	}
+	
+	public List<Categoria> listAllByLikeNome(String nome) {
+		return rep.findByNomeContaining(nome);
+	}
 
 }

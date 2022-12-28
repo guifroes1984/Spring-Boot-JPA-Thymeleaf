@@ -47,13 +47,13 @@ public class ContasController {
 		
 		model.addAttribute("listContas", listContas);
 		
-		return "index";
+		return "/contas/index";
 	}
 	
 	@RequestMapping("adicionar")
 	public ModelAndView add(Contas conta) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("adicionar");
+		mv.setViewName("contas/adicionar");
 		mv.addObject("conta", conta);
 		
 		List<Categoria> cat = categoriaService.listAll();
