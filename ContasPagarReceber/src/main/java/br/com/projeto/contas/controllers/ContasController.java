@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.projeto.contas.model.Contas;
@@ -25,9 +26,20 @@ public class ContasController {
 	private ContasService contasService;
 	
 	@RequestMapping("listar")
-	public String index(Model model) {
+	public String index(@RequestParam(value = "search", required = false) String q, Model model) {
+		List<Contas> listContas = null;
 		
-		List<Contas> listContas = contasService.listAll();
+		if ((q != null) && (q.length() > 1) && (!q.matches("[+-]?[0-9]*\\.?[0-9]+"))) {
+			listContas = contasService.listAllByLikeDescricao(q);
+			model.addAttribute("search", q);
+		} else if ((q != null) && (q.length() > 1) && (q.matches("[+-]?[0-9]*\\.?[0-9]+"))) {
+			listContas = contasService.listAllFindByValor(Float.parseFloat(q));
+			model.addAttribute("search", q);
+		} else {
+			listContas = contasService.listAll();
+			model.addAttribute("search", "");
+		}
+		
 		model.addAttribute("listContas", listContas);
 		
 		return "index";

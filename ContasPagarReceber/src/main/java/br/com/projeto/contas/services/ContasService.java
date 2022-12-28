@@ -20,6 +20,18 @@ public class ContasService {
 		return rep.findAll();
 	}
 	
+	public List<Contas> listAllByDescricao(String descricao) {
+		return rep.findByDescricao(descricao);
+	}
+	
+	public List<Contas> listAllByLikeDescricao(String descricao) {
+		return rep.findByDescricaoContaining(descricao);
+	}
+	
+	public List<Contas> listAllFindByValor(float valor) {
+		return rep.findByValor(valor);
+	}
+	
 	public void save(Contas conta) {
 		rep.save(conta);
 	}

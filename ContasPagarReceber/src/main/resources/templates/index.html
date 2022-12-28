@@ -14,6 +14,18 @@
 			<strong>Minhas contas a Pagar</strong>
 	</div>
 	
+	<form class="form-horizontal" method="GET" th:action="@{/contas/listar}" style="margin: 10px">
+			<div class="input-group">
+			
+					<input type="text" class="form-control input-sm" id="search" name="search" th:value="${search}" placeholder="Filtrar por descrição ou valor">
+					
+					<div class="input-group-append">
+					
+						<button type="submit" class="btn btn-sm btn-danger">Buscar</button>
+					</div>
+			</div>
+	</form>		
+	
 	<div class="card-body">
 		<div class="table-responsive">
 				<table class="table table-sm table-striped table-hove table-bordered">
