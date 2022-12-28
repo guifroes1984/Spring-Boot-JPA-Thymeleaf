@@ -51,6 +51,13 @@ public class ContasController {
 		return mv;
 	}
 	
+	@RequestMapping("editar/{id}")
+	public ModelAndView editar(@PathVariable("id") Long id) {
+		
+		return add(contasService.get(id));
+		
+	}
+	
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public ModelAndView save(@Valid @ModelAttribute("conta") Contas conta, BindingResult result) {
 		
