@@ -34,6 +34,7 @@
 							<th>ID</th>
 							<th>Descrição</th>
 							<th>Total</th>
+							<th>Categoria</th>
 							<th>Data</th>
 							<th>Ações</th>
 						</tr>
@@ -43,7 +44,8 @@
 						<tr th:each="conta : ${listContas}">
 							<td th:text="${conta.id}">ID</td>
 							<td th:text="${conta.descricao}">Descrição</td>
-							<td th:text="${conta.valor}">Valor</td>
+							<td th:text="${conta.valor}"></td>
+							<td th:text="${conta.categoria.nome}"></td>
 							<td th:text="${#dates.format(conta.data, 'dd/MM/yyyy')}">Data</td>
 							<td>
 								

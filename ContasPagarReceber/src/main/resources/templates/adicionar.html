@@ -52,6 +52,18 @@
 				
 				<div class="form-group row">
 					<div class="col-md-4">
+					<label>Categoria</label>
+						<select th:field="*{categoria}" class="form-control input-sm">
+							<option value="">--[Selecione]--</option>
+							<option th:each="cat : ${categoria_list}"
+								th:value="${cat.id}" th:utext="${cat.nome}"
+							/>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-md-4">
 					<label>Data</label>
 						<input type="text" class="form-control input-sm" id="data" th:field="*{data}" placeholder="Ex: 10/10/2022">
 					</div>

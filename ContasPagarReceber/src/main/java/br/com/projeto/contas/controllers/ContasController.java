@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.projeto.contas.model.Categoria;
 import br.com.projeto.contas.model.Contas;
+import br.com.projeto.contas.services.CategoriaService;
 import br.com.projeto.contas.services.ContasService;
 
 @Controller
@@ -24,6 +26,9 @@ public class ContasController {
 	
 	@Autowired
 	private ContasService contasService;
+	
+	@Autowired
+	private CategoriaService categoriaService;
 	
 	@RequestMapping("listar")
 	public String index(@RequestParam(value = "search", required = false) String q, Model model) {
@@ -50,6 +55,9 @@ public class ContasController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("adicionar");
 		mv.addObject("conta", conta);
+		
+		List<Categoria> cat = categoriaService.listAll();
+		mv.addObject("categoria_list", cat);
 		
 		return mv;
 	}
