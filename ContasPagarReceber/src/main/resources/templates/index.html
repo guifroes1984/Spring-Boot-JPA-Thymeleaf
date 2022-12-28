@@ -23,6 +23,7 @@
 							<th>Descrição</th>
 							<th>Total</th>
 							<th>Data</th>
+							<th>Ações</th>
 						</tr>
 					</thead>
 					
@@ -32,6 +33,11 @@
 							<td th:text="${conta.descricao}">Descrição</td>
 							<td th:text="${conta.valor}">Valor</td>
 							<td th:text="${#dates.format(conta.data, 'dd/MM/yyyy')}">Data</td>
+							<td>
+								<div class="btn-group pull-right">
+									<a class="btn btn-sm btn-danger" th:href="@{delete/{id} (id=${conta.id})}" th:data-confirm-delete="|Deseja realmente excluir ${conta.descricao}|" onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false">Delete</a>
+								</div>
+							</td>
 						</tr>
 					</tbody>
 				</table>
